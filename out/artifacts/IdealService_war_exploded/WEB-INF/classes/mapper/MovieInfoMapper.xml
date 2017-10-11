@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ideal.dao.MovieInfoDao" >
+  <resultMap id="BaseResultMap" type="com.ideal.pojo.MovieInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chinese_name" property="chineseName" jdbcType="VARCHAR" />
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />
+    <result column="ask" property="ask" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="REAL" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="film_years" property="filmYears" jdbcType="DATE" />
+    <result column="film_types" property="filmTypes" jdbcType="CHAR" />
+    <result column="film_label" property="filmLabel" jdbcType="VARCHAR" />
+    <result column="movie_list_id" property="movieListId" jdbcType="INTEGER" />
+    <result column="film_source" property="filmSource" jdbcType="CHAR" />
+    <result column="medium_type" property="mediumType" jdbcType="CHAR" />
+    <result column="film_time" property="filmTime" jdbcType="INTEGER" />
+    <result column="heat" property="heat" jdbcType="INTEGER" />
+    <result column="create_id" property="createId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_id" property="modifyId" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ideal.pojo.MovieInfo" extends="BaseResultMap" >
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chinese_name, english_name, ask, images, grade, country, film_years, film_types, 
+    film_label, movie_list_id, film_source, medium_type, film_time, heat, create_id, 
+    create_time, modify_id, modify_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="queryMovieInfo" resultMap="ResultMapWithBLOBs">
+    select <include refid="Base_Column_List" /> from movie_info
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideal.pojo.MovieInfo" >
+    insert into movie_info (id, chinese_name, english_name, 
+      ask, images, grade, country, 
+      film_years, film_types, film_label, 
+      movie_list_id, film_source, medium_type, 
+      film_time, heat, create_id, 
+      create_time, modify_id, modify_time, 
+      introduction)
+    values (#{id,jdbcType=INTEGER}, #{chineseName,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, 
+      #{ask,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{grade,jdbcType=REAL}, #{country,jdbcType=VARCHAR}, 
+      #{filmYears,jdbcType=DATE}, #{filmTypes,jdbcType=CHAR}, #{filmLabel,jdbcType=VARCHAR}, 
+      #{movieListId,jdbcType=INTEGER}, #{filmSource,jdbcType=CHAR}, #{mediumType,jdbcType=CHAR}, 
+      #{filmTime,jdbcType=INTEGER}, #{heat,jdbcType=INTEGER}, #{createId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideal.pojo.MovieInfo" >
+    insert into movie_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chineseName != null" >
+        chinese_name,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="ask != null" >
+        ask,
+      </if>
+      <if test="images != null" >
+        images,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="filmYears != null" >
+        film_years,
+      </if>
+      <if test="filmTypes != null" >
+        film_types,
+      </if>
+      <if test="filmLabel != null" >
+        film_label,
+      </if>
+      <if test="movieListId != null" >
+        movie_list_id,
+      </if>
+      <if test="filmSource != null" >
+        film_source,
+      </if>
+      <if test="mediumType != null" >
+        medium_type,
+      </if>
+      <if test="filmTime != null" >
+        film_time,
+      </if>
+      <if test="heat != null" >
+        heat,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyId != null" >
+        modify_id,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chineseName != null" >
+        #{chineseName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ask != null" >
+        #{ask,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=REAL},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="filmYears != null" >
+        #{filmYears,jdbcType=DATE},
+      </if>
+      <if test="filmTypes != null" >
+        #{filmTypes,jdbcType=CHAR},
+      </if>
+      <if test="filmLabel != null" >
+        #{filmLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="movieListId != null" >
+        #{movieListId,jdbcType=INTEGER},
+      </if>
+      <if test="filmSource != null" >
+        #{filmSource,jdbcType=CHAR},
+      </if>
+      <if test="mediumType != null" >
+        #{mediumType,jdbcType=CHAR},
+      </if>
+      <if test="filmTime != null" >
+        #{filmTime,jdbcType=INTEGER},
+      </if>
+      <if test="heat != null" >
+        #{heat,jdbcType=INTEGER},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideal.pojo.MovieInfo" >
+    update movie_info
+    <set >
+      <if test="chineseName != null" >
+        chinese_name = #{chineseName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ask != null" >
+        ask = #{ask,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=REAL},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="filmYears != null" >
+        film_years = #{filmYears,jdbcType=DATE},
+      </if>
+      <if test="filmTypes != null" >
+        film_types = #{filmTypes,jdbcType=CHAR},
+      </if>
+      <if test="filmLabel != null" >
+        film_label = #{filmLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="movieListId != null" >
+        movie_list_id = #{movieListId,jdbcType=INTEGER},
+      </if>
+      <if test="filmSource != null" >
+        film_source = #{filmSource,jdbcType=CHAR},
+      </if>
+      <if test="mediumType != null" >
+        medium_type = #{mediumType,jdbcType=CHAR},
+      </if>
+      <if test="filmTime != null" >
+        film_time = #{filmTime,jdbcType=INTEGER},
+      </if>
+      <if test="heat != null" >
+        heat = #{heat,jdbcType=INTEGER},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        modify_id = #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ideal.pojo.MovieInfo" >
+    update movie_info
+    set chinese_name = #{chineseName,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      ask = #{ask,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=REAL},
+      country = #{country,jdbcType=VARCHAR},
+      film_years = #{filmYears,jdbcType=DATE},
+      film_types = #{filmTypes,jdbcType=CHAR},
+      film_label = #{filmLabel,jdbcType=VARCHAR},
+      movie_list_id = #{movieListId,jdbcType=INTEGER},
+      film_source = #{filmSource,jdbcType=CHAR},
+      medium_type = #{mediumType,jdbcType=CHAR},
+      film_time = #{filmTime,jdbcType=INTEGER},
+      heat = #{heat,jdbcType=INTEGER},
+      create_id = #{createId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideal.pojo.MovieInfo" >
+    update movie_info
+    set chinese_name = #{chineseName,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      ask = #{ask,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=REAL},
+      country = #{country,jdbcType=VARCHAR},
+      film_years = #{filmYears,jdbcType=DATE},
+      film_types = #{filmTypes,jdbcType=CHAR},
+      film_label = #{filmLabel,jdbcType=VARCHAR},
+      movie_list_id = #{movieListId,jdbcType=INTEGER},
+      film_source = #{filmSource,jdbcType=CHAR},
+      medium_type = #{mediumType,jdbcType=CHAR},
+      film_time = #{filmTime,jdbcType=INTEGER},
+      heat = #{heat,jdbcType=INTEGER},
+      create_id = #{createId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
