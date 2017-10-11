@@ -3,6 +3,7 @@ package com.ideal.pojo;
 import java.util.Date;
 
 public class MovieInfo {
+
     private Integer id;
 
     private String chineseName;
@@ -42,6 +43,10 @@ public class MovieInfo {
     private Date modifyTime;
 
     private String introduction;
+
+    private String createName;
+
+    private String modifyName;
 
     public Integer getId() {
         return id;
@@ -201,5 +206,21 @@ public class MovieInfo {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
+    }
+
+    public String getCreateName() {
+        return createName;
+    }
+
+    public void setCreateName(String createName) {
+        this.createName = createName;
+    }
+
+    public String getModifyName() {
+        return modifyName;
+    }
+
+    public void setModifyName(String modifyName) {
+        this.modifyName = modifyName;
     }
 }

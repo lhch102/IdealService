@@ -4,12 +4,14 @@ import com.ideal.pojo.LoginResult;
 import com.ideal.service.LoginService;
 
 import javax.annotation.Resource;
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
  * 用户相关接口
  */
+@Singleton
 @Path("/user")
 public class UserService {
 
