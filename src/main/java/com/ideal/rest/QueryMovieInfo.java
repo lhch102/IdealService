@@ -3,8 +3,6 @@ package com.ideal.rest;
 import com.ideal.pojo.MovieInfo;
 import com.ideal.service.QueryMovieInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,7 +14,6 @@ import javax.ws.rs.core.MediaType;
  * Created by Administrator on 2017/10/6.
  */
 @Path("/queryMovieInfo")
-//@ContextConfiguration(locations = {"classpath:config/spring/spring-mybatis.xml"})
 public class QueryMovieInfo {
 
     @Autowired
@@ -28,9 +25,4 @@ public class QueryMovieInfo {
         return queryMovieInfoService.queryMovie();
     }
 
-    @GET
-    @Path("/hello")
-    public String say(){
-        return queryMovieInfoService.sayHello();
-    }
 }

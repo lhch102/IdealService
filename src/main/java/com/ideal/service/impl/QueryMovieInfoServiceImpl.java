@@ -20,8 +20,4 @@ public class QueryMovieInfoServiceImpl implements QueryMovieInfoService {
         return movieInfo.queryMovieInfo();
     }
 
-    @Override
-    public String sayHello() {
-        return "Hello Jersey";
-    }
 }

@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>IdealService</title>
   </head>
   <body>
-  $END$
+  <h1>IdealService 启动成功</h1>
   </body>
 </html>

@@ -10,9 +10,11 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!-- 自动扫描quick4j包 ,将带有注解的类 纳入spring容器管理 -->
-    <context:component-scan base-package ="com.ideal"><!-- base-package 如果多个，用“,”分隔 -->
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+    <context:component-scan base-package ="com.ideal"/>
+        <!-- base-package 如果多个，用“,”分隔 -->
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>-->
+
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -45,7 +47,6 @@
         <!--指定实体类包，自动将实体类的简单类名映射为别名-->
         <property name="typeAliasesPackage" value="com.seven.domain"/>
     </bean>
-    <context:annotation-config/>
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ideal.dao" />

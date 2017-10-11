@@ -9,5 +9,4 @@ public interface QueryMovieInfoService {
 
     public MovieInfo queryMovie();
 
-    public String sayHello();
 }

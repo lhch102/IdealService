@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
-	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+<component inheritJdk="true">
 	<contentEntry url="file://$MODULE_DIR$">
-		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<lib name="Tomcat 7.0.81" scope="PROVIDED"/>
 	<levels>
 		<level name="Jersey-2.2" value="project"/>
 		<level name="Tomcat 7.0.81" value="application_server_libraries"/>
