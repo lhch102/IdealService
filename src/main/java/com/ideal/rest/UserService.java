@@ -20,7 +20,6 @@ public class UserService {
 
     /**
      * 一键登录
-     *
      * @param id
      * @param phoneNumber
      * @param userSecurityCode
@@ -30,7 +29,7 @@ public class UserService {
     @Path("/login")
     //返回给client为json类型（application/json）
     @Produces(MediaType.APPLICATION_JSON)
-    public LoginResult login(@QueryParam("id") Integer id, String phoneNumber, @QueryParam("userSecurityCode") String userSecurityCode) {
+    public LoginResult login(@DefaultValue("") @QueryParam("id") Integer id, String phoneNumber, @QueryParam("userSecurityCode") String userSecurityCode) {
         return loginService.login(id, phoneNumber, userSecurityCode);
     }
 
@@ -41,11 +40,12 @@ public class UserService {
      * @return
      */
     @GET
-    @Path("/sendSecurityCode")
-    //返回给client为json类型（application/json）
+    @Path("/sendSecurityCode/{phoneNumber}")
+    //指定处理请求的提交内容类型
+    @Consumes(MediaType.TEXT_XML)
+    //指定返回的内容类型，返回给client为json类型（application/json）
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public boolean sendSecurityCode(@QueryParam("phoneNumber") String phoneNumber) {
+    public boolean sendSecurityCode(@PathParam("phoneNumber") String phoneNumber) {
         return loginService.sendSecurityCode(phoneNumber);
     }
 
