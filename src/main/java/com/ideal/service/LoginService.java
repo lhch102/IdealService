@@ -2,6 +2,8 @@ package com.ideal.service;
 
 import com.ideal.pojo.LoginResult;
 
+import java.util.Map;
+
 /**
  * 用户登录相关逻辑
  * Created by Administrator on 2017/10/6.
@@ -22,6 +24,6 @@ public interface LoginService {
      * @param phoneNumber
      * @return
      */
-    public boolean sendSecurityCode(String phoneNumber);
+    public Map<String, String> sendSecurityCode(String phoneNumber);
 
 }

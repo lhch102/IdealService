@@ -14,9 +14,9 @@ import com.ideal.utils.RandomNumUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -25,9 +25,9 @@ import java.util.*;
 @Service("loginService")
 public class LoginServiceImpl implements LoginService{
 
-    @Resource
+    @Autowired
     private UserInfoDao userInfoDao;
-    @Resource
+    @Autowired
     private SecurityCodeDao sendSecurityCodeDao;
 
     /**
@@ -107,32 +107,36 @@ public class LoginServiceImpl implements LoginService{
      * @param phoneNumber
      * @return
      */
-    public boolean sendSecurityCode(String phoneNumber) {
-        boolean sendStatus;
+    public Map<String, String> sendSecurityCode(String phoneNumber) {
         // 产生随机的认证码
         String securityCode = RandomNumUtil.getFourRandom(QUANTITY);
         Map<String, String> bodymap = sendMsg(phoneNumber, securityCode);
-        if (null != bodymap.get(ERRORKEY)) {
+        char isSuccess;
+        if ("false".equals(bodymap.get("success"))) {
             //当传入的参数不合法时，返回有错误说明
-            logger.info(bodymap.get(ERRORKEY));
-            sendStatus = false;
-        } else {
+            logger.info(bodymap.get("message"));
+            isSuccess = 1;
+        }else {
             //成功返回map，对应的key分别为：message、success等
             logger.info(JSON.toJSONString(bodymap));
-            sendStatus = true;
+            isSuccess = 0;
         }
         SecurityCode sc = new SecurityCode();
         sc.setPhoneNum(phoneNumber);
         sc.setSecurityCode(securityCode);
-//        sc.setBusinessType(businessType);
+        sc.setIsSuccess(isSuccess);
         sc.setReturnMessage(JSON.toJSONString(bodymap));
         //保存验证码
         sendSecurityCodeDao.insertSelective(sc);
-        return sendStatus;
+        return bodymap;
     }
 
-    // @phoneNum: 目标手机号，多个手机号可以逗号分隔;
-    // @params: 短信模板中的变量，数字必须转换为字符串，如短信模板中变量为${no}",则参数params的值为{"no":"123456"}
+    /**
+     *
+     * @param phoneNumber 目标手机号，多个手机号可以逗号分隔;
+     * @param securityCode 短信模板中的变量，数字必须转换为字符串，如短信模板中变量为${no}",则参数params的值为{"no":"123456"}
+     * @return
+     */
     public Map<String, String> sendMsg(String phoneNumber, String securityCode) {
 
         String path = "/singleSendSms";
@@ -179,6 +183,7 @@ public class LoginServiceImpl implements LoginService{
                 for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
                     map.put(entry.getKey(), entry.getValue().toString());
                 }
+
             }
         } catch (Exception e) {
             map.put(ERRORKEY, body);

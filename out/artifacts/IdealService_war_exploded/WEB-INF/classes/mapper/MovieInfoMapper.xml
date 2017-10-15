@@ -42,7 +42,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="queryMovieInfo" resultMap="ResultMapWithBLOBs">
+  <select id="queryMovieInfo" resultMap="BaseResultMap">
     select <include refid="Base_Column_List" /> from movie_info
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

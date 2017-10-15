@@ -7,13 +7,14 @@
     <result column="security_code" property="securityCode" jdbcType="VARCHAR" />
     <result column="return_message" property="returnMessage" jdbcType="VARCHAR" />
     <result column="business_type" property="businessType" jdbcType="CHAR" />
+    <result column="is_success" property="isSuccess" jdbcType="CHAR" />
     <result column="create_id" property="createId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="modify_id" property="modifyId" jdbcType="INTEGER" />
     <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, phone_num, security_code, return_message, business_type, create_id, create_time, 
+    id, phone_num, security_code, return_message, business_type,is_success, create_id, create_time,
     modify_id, modify_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -28,11 +29,11 @@
   </delete>
   <insert id="insert" parameterType="com.ideal.pojo.SecurityCode" >
     insert into security_code (id, phone_num, security_code, 
-      return_message, business_type, create_id, 
+      return_message, business_type,is_success, create_id,
       create_time, modify_id, modify_time
       )
     values (#{id,jdbcType=INTEGER}, #{phoneNum,jdbcType=VARCHAR}, #{securityCode,jdbcType=VARCHAR}, 
-      #{returnMessage,jdbcType=VARCHAR}, #{businessType,jdbcType=CHAR}, #{createId,jdbcType=INTEGER}, 
+      #{returnMessage,jdbcType=VARCHAR}, #{businessType,jdbcType=CHAR}, #{isSuccess,jdbcType=CHAR},#{createId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -53,6 +54,9 @@
       </if>
       <if test="businessType != null" >
         business_type,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
       </if>
       <if test="createId != null" >
         create_id,
@@ -83,6 +87,9 @@
       <if test="businessType != null" >
         #{businessType,jdbcType=CHAR},
       </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=CHAR},
+      </if>
       <if test="createId != null" >
         #{createId,jdbcType=INTEGER},
       </if>
@@ -112,6 +119,9 @@
       <if test="businessType != null" >
         business_type = #{businessType,jdbcType=CHAR},
       </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=CHAR},
+      </if>
       <if test="createId != null" >
         create_id = #{createId,jdbcType=INTEGER},
       </if>
@@ -133,6 +143,7 @@
       security_code = #{securityCode,jdbcType=VARCHAR},
       return_message = #{returnMessage,jdbcType=VARCHAR},
       business_type = #{businessType,jdbcType=CHAR},
+      is_success = #{isSuccess,jdbcType=CHAR},
       create_id = #{createId,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_id = #{modifyId,jdbcType=INTEGER},

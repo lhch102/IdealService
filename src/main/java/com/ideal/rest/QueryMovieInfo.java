@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
  * 查询影片信息接口
  * Created by Administrator on 2017/10/6.
  */
-@Singleton
+//@Singleton
 @Path("/queryMovieInfo")
 public class QueryMovieInfo {
 

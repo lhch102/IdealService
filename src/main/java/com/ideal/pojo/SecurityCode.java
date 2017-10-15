@@ -13,6 +13,9 @@ public class SecurityCode {
 
     private String businessType;
 
+    //是否成功
+    private char isSuccess;
+
     private Integer createId;
 
     private Date createTime;
@@ -91,5 +94,13 @@ public class SecurityCode {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+
+    public char getIsSuccess() {
+        return isSuccess;
+    }
+
+    public void setIsSuccess(char isSuccess) {
+        this.isSuccess = isSuccess;
     }
 }
