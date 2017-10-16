@@ -30,12 +30,13 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -53,6 +54,24 @@
     </orderEntry>
     <orderEntry type="module-library">
       <library name="tools.jar">
+        <CLASSES>
+          <root url="jar://E:/Java/jdk1.8.0_66/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="E:/Java/jdk1.8.0_66/lib/jconsole.jar">
+        <CLASSES>
+          <root url="jar://E:/Java/jdk1.8.0_66/lib/jconsole.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="E:/Java/jdk1.8.0_66/lib/tools.jar">
         <CLASSES>
           <root url="jar://E:/Java/jdk1.8.0_66/lib/tools.jar!/" />
         </CLASSES>
@@ -104,7 +123,7 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.15" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.13" level="project" />
     <orderEntry type="module-library">
-      <library name="E:/Java/jdk1.8.0_66/lib/jconsole.jar">
+      <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
           <root url="jar://E:/Java/jdk1.8.0_66/lib/jconsole.jar!/" />
         </CLASSES>
@@ -113,7 +132,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="E:/Java/jdk1.8.0_66/lib/tools.jar">
+      <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
           <root url="jar://E:/Java/jdk1.8.0_66/lib/tools.jar!/" />
         </CLASSES>
@@ -121,9 +140,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.1.7.RELEASE" level="project" />
