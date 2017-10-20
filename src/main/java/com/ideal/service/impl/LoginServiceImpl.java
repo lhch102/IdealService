@@ -23,12 +23,13 @@ import java.util.*;
  * Created by Administrator on 2017/10/8.
  */
 @Service("loginService")
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired
     private SecurityCodeDao sendSecurityCodeDao;
+
 
     /**
      * 一键登录
@@ -38,8 +39,8 @@ public class LoginServiceImpl implements LoginService{
      * @param userSecurityCode 用户输入的验证码
      * @return
      */
+    @Override
     public LoginResult login(Integer id, String phoneNumber, String userSecurityCode) {
-
         LoginResult result = new LoginResult();
         //1、先判断验证码是否正确
         String securityCode = sendSecurityCodeDao.getSecurityCode(phoneNumber);
@@ -104,22 +105,33 @@ public class LoginServiceImpl implements LoginService{
 
     /**
      * 发送验证码
+     *
      * @param phoneNumber
      * @return
      */
+    @Override
     public Map<String, String> sendSecurityCode(String phoneNumber) {
         // 产生随机的认证码
         String securityCode = RandomNumUtil.getFourRandom(QUANTITY);
         Map<String, String> bodymap = sendMsg(phoneNumber, securityCode);
+//        0：成功；1：失败
         char isSuccess;
         if ("false".equals(bodymap.get("success"))) {
             //当传入的参数不合法时，返回有错误说明
             logger.info(bodymap.get("message"));
             isSuccess = 1;
-        }else {
+        } else {
             //成功返回map，对应的key分别为：message、success等
             logger.info(JSON.toJSONString(bodymap));
             isSuccess = 0;
+            Calendar.getInstance().add(Calendar.MINUTE,0);
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    // task to run goes here
+                    System.out.println("Hello !!");
+                }
+            };
         }
         SecurityCode sc = new SecurityCode();
         sc.setPhoneNum(phoneNumber);
@@ -132,8 +144,7 @@ public class LoginServiceImpl implements LoginService{
     }
 
     /**
-     *
-     * @param phoneNumber 目标手机号，多个手机号可以逗号分隔;
+     * @param phoneNumber  目标手机号，多个手机号可以逗号分隔;
      * @param securityCode 短信模板中的变量，数字必须转换为字符串，如短信模板中变量为${no}",则参数params的值为{"no":"123456"}
      * @return
      */
@@ -190,5 +201,4 @@ public class LoginServiceImpl implements LoginService{
         }
         return map;
     }
-
 }

@@ -2,7 +2,12 @@ package com.ideal.pojo;
 
 import java.util.Date;
 
+/**
+ * 手机号验证码表实体
+ * @author
+ */
 public class SecurityCode {
+
     private Integer id;
 
     private String phoneNum;
@@ -13,8 +18,15 @@ public class SecurityCode {
 
     private String businessType;
 
-    //是否成功
+    /**
+     * 是否成功;0：成功；1：失败
+     */
     private char isSuccess;
+
+    /**
+     * 验证码是否有效；0：无效；1：有效
+     */
+    private char isEffective;
 
     private Integer createId;
 
@@ -102,5 +114,13 @@ public class SecurityCode {
 
     public void setIsSuccess(char isSuccess) {
         this.isSuccess = isSuccess;
+    }
+
+    public char getIsEffective() {
+        return isEffective;
+    }
+
+    public void setIsEffective(char isEffective) {
+        this.isEffective = isEffective;
     }
 }
