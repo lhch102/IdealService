@@ -6,6 +6,8 @@ import com.ideal.service.QueryMovieInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/10/6.
  */
@@ -16,7 +18,7 @@ public class QueryMovieInfoServiceImpl implements QueryMovieInfoService {
     private MovieInfoDao movieInfo;
 
     @Override
-    public MovieInfo queryMovie(){
+    public List<MovieInfo> queryMovie(){
         return movieInfo.queryMovieInfo();
     }
 

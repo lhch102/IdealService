@@ -4,6 +4,8 @@ import com.ideal.interceptor.Mapper;
 import com.ideal.pojo.MovieInfo;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MovieInfoDao {
     int deleteByPrimaryKey(Integer id);
@@ -18,7 +20,7 @@ public interface MovieInfoDao {
      * 查询影片信息
      * @return
      */
-    MovieInfo queryMovieInfo();
+    List<MovieInfo> queryMovieInfo();
 
     int updateByPrimaryKeySelective(MovieInfo record);
 
