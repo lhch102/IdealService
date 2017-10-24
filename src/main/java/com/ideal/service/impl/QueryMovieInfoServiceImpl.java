@@ -6,6 +6,7 @@ import com.ideal.service.QueryMovieInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,13 @@ public class QueryMovieInfoServiceImpl implements QueryMovieInfoService {
 
     @Override
     public List<MovieInfo> queryMovie(){
-        return movieInfo.queryMovieInfo();
+        List<MovieInfo> queryMovieInfo = new ArrayList<>();
+        try{
+            queryMovieInfo = movieInfo.queryMovieInfo();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return queryMovieInfo;
     }
 
 }

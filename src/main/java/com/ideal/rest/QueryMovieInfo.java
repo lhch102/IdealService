@@ -23,6 +23,7 @@ public class QueryMovieInfo {
 
     @Autowired
     private QueryMovieInfoService queryMovieInfoService;
+
     @GET
     //返回给client为json类型（application/json）
     @Produces(MediaType.APPLICATION_JSON)
