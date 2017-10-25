@@ -16,6 +16,8 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -124,7 +126,7 @@ public class LoginServiceImpl implements LoginService {
             //成功返回map，对应的key分别为：message、success等
             logger.info(JSON.toJSONString(bodymap));
             isSuccess = 0;
-            Calendar.getInstance().add(Calendar.MINUTE,0);
+            Calendar.getInstance().add(Calendar.MINUTE, 0);
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
