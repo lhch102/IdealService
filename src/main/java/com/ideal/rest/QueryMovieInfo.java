@@ -27,7 +27,8 @@ public class QueryMovieInfo {
     //返回给client为json类型（application/json）
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieInfo> queryMovieInfo() {
-        return queryMovieInfoService.queryMovie();
+        List<MovieInfo> queryMovie = queryMovieInfoService.queryMovie();
+        return queryMovie;
     }
 
 }
