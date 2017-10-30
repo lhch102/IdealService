@@ -117,15 +117,15 @@ public class LoginServiceImpl implements LoginService {
         String securityCode = RandomNumUtil.getFourRandom(QUANTITY);
         Map<String, String> bodymap = sendMsg(phoneNumber, securityCode);
 //        0：成功；1：失败
-        char isSuccess;
+        String isSuccess;
         if ("false".equals(bodymap.get("success"))) {
             //当传入的参数不合法时，返回有错误说明
             logger.info(bodymap.get("message"));
-            isSuccess = 1;
+            isSuccess = "1";
         } else {
             //成功返回map，对应的key分别为：message、success等
             logger.info(JSON.toJSONString(bodymap));
-            isSuccess = 0;
+            isSuccess = "0";
             Calendar.getInstance().add(Calendar.MINUTE, 0);
             Runnable runnable = new Runnable() {
                 @Override

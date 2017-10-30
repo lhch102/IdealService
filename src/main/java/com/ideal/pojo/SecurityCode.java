@@ -21,12 +21,12 @@ public class SecurityCode {
     /**
      * 是否成功;0：成功；1：失败
      */
-    private char isSuccess;
+    private String isSuccess;
 
     /**
      * 验证码是否有效；0：无效；1：有效
      */
-    private char isEffective;
+    private String isEffective;
 
     private Integer createId;
 
@@ -108,19 +108,19 @@ public class SecurityCode {
         this.modifyTime = modifyTime;
     }
 
-    public char getIsSuccess() {
+    public String getIsSuccess() {
         return isSuccess;
     }
 
-    public void setIsSuccess(char isSuccess) {
+    public void setIsSuccess(String isSuccess) {
         this.isSuccess = isSuccess;
     }
 
-    public char getIsEffective() {
+    public String getIsEffective() {
         return isEffective;
     }
 
-    public void setIsEffective(char isEffective) {
+    public void setIsEffective(String isEffective) {
         this.isEffective = isEffective;
     }
 }

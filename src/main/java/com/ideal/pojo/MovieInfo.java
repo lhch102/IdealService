@@ -1,7 +1,14 @@
 package com.ideal.pojo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 
+/**
+ * 影片实体类
+ * @author lhch
+ */
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class MovieInfo {
 
     private Integer id;
@@ -223,4 +230,5 @@ public class MovieInfo {
     public void setModifyName(String modifyName) {
         this.modifyName = modifyName;
     }
+
 }

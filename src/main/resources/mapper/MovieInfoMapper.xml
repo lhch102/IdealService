@@ -27,7 +27,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, chinese_name, english_name, ask, images, grade, country, film_years, film_types, 
-    film_label, movie_list_id, film_source, medium_type, film_time, heat, create_id, 
+    film_label, movie_list_id, film_source, medium_type, film_time, heat, create_id,
     create_time, modify_id, modify_time
   </sql>
   <sql id="Blob_Column_List" >
@@ -42,7 +42,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="queryMovieInfo" resultMap="BaseResultMap">
+  <select id="queryMovieInfo" resultMap="BaseResultMap" >
     select <include refid="Base_Column_List" /> from movie_info
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -54,14 +54,14 @@
       ask, images, grade, country, 
       film_years, film_types, film_label, 
       movie_list_id, film_source, medium_type, 
-      film_time, heat, create_id, 
+      film_time, heat, create_id,
       create_time, modify_id, modify_time, 
       introduction)
     values (#{id,jdbcType=INTEGER}, #{chineseName,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, 
       #{ask,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{grade,jdbcType=REAL}, #{country,jdbcType=VARCHAR}, 
       #{filmYears,jdbcType=DATE}, #{filmTypes,jdbcType=CHAR}, #{filmLabel,jdbcType=VARCHAR}, 
       #{movieListId,jdbcType=INTEGER}, #{filmSource,jdbcType=CHAR}, #{mediumType,jdbcType=CHAR}, 
-      #{filmTime,jdbcType=INTEGER}, #{heat,jdbcType=INTEGER}, #{createId,jdbcType=INTEGER}, 
+      #{filmTime,jdbcType=INTEGER}, #{heat,jdbcType=INTEGER}, #{createId,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, 
       #{introduction,jdbcType=LONGVARCHAR})
   </insert>

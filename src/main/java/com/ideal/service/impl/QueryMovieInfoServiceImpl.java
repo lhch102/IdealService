@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class QueryMovieInfoServiceImpl implements QueryMovieInfoService {
         List<MovieInfo> queryMovieInfo = new ArrayList<>();
         try{
             queryMovieInfo = movieInfo.queryMovieInfo();
+
         }catch (Exception e){
             e.printStackTrace();
         }
