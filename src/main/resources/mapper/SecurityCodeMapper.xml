@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ideal.dao.SecurityCodeDao" >
+  <resultMap id="BaseResultMap" type="com.ideal.pojo.SecurityCode" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="security_code" property="securityCode" jdbcType="VARCHAR" />
+    <result column="return_message" property="returnMessage" jdbcType="VARCHAR" />
+    <result column="business_type" property="businessType" jdbcType="CHAR" />
+    <result column="is_success" property="isSuccess" jdbcType="CHAR" />
+    <result column="is_effective" property="isEffective" jdbcType="CHAR" />
+    <result column="create_id" property="createId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_id" property="modifyId" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone_num, security_code, return_message, business_type,is_success,is_effective, create_id, create_time,
+    modify_id, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from security_code
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from security_code
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ideal.pojo.SecurityCode" >
+    insert into security_code (id, phone_num, security_code, 
+      return_message, business_type,is_success,is_effective, create_id,
+      create_time, modify_id, modify_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{phoneNum,jdbcType=VARCHAR}, #{securityCode,jdbcType=VARCHAR}, 
+      #{returnMessage,jdbcType=VARCHAR}, #{businessType,jdbcType=CHAR}, #{isSuccess,jdbcType=CHAR},
+      #{isEffective,jdbcType=CHAR},#{createId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ideal.pojo.SecurityCode" >
+    insert into security_code
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="securityCode != null" >
+        security_code,
+      </if>
+      <if test="returnMessage != null" >
+        return_message,
+      </if>
+      <if test="businessType != null" >
+        business_type,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
+      </if>
+      <if test="isEffective != null" >
+        is_effective,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyId != null" >
+        modify_id,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="securityCode != null" >
+        #{securityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMessage != null" >
+        #{returnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=CHAR},
+      </if>
+      <if test="isEffective != null" >
+        #{isEffective,jdbcType=CHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ideal.pojo.SecurityCode" >
+    update security_code
+    <set >
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="securityCode != null" >
+        security_code = #{securityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMessage != null" >
+        return_message = #{returnMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        business_type = #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=CHAR},
+      </if>
+      <if test="isEffective != null" >
+        is_effective = #{isEffective,jdbcType=CHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        modify_id = #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ideal.pojo.SecurityCode" >
+    update security_code
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      security_code = #{securityCode,jdbcType=VARCHAR},
+      return_message = #{returnMessage,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=CHAR},
+      is_success = #{isSuccess,jdbcType=CHAR},
+      is_effective = #{isEffective,jdbcType=CHAR},
+      create_id = #{createId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
