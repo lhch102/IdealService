@@ -1,0 +1,27 @@
+INSERT INTO sys_user_role (`id`, `role_id`, `user_id`, `create_id`, `create_time`, `modify_id`, `modify_time`) VALUES (1, 1, 2, 1, '2018-2-25 02:33:43', NULL, NULL);
+INSERT INTO sys_user_role (`id`, `role_id`, `user_id`, `create_id`, `create_time`, `modify_id`, `modify_time`) VALUES (2, 2, 3, 1, '2018-2-25 02:33:43', NULL, NULL);
+
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (1, 1, 1);
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (2, 1, 2);
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (3, 2, 3);
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (4, 1, 4);
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (5, 2, 5);
+INSERT INTO sys_role_permission (`id`, `role_id`, `permission_id`) VALUES (6, 1, 6);
+
+INSERT INTO sys_user (`id`, `name`, `nick_name`, `user_name`, `password`, `token`, `sex`, `phone_number`, `email`, `locked`, `login_time`, `create_id`, `create_time`, `modify_id`, `modify_time`, `modify_item`) VALUES (1, '超级用户', 'admin', 'admin', 'U2FsdGVkX1/JRP2vCuq1DcMo+ALatZs8ajJMQFQSF7I=', NULL, '1', 'NULL', NULL, '1', NULL, NULL, '2018-2-25 02:30:57', NULL, NULL, NULL);
+INSERT INTO sys_user (`id`, `name`, `nick_name`, `user_name`, `password`, `token`, `sex`, `phone_number`, `email`, `locked`, `login_time`, `create_id`, `create_time`, `modify_id`, `modify_time`, `modify_item`) VALUES (2, '李四', 'lisi', 'lisi', 'U2FsdGVkX1/JRP2vCuq1DcMo+ALatZs8ajJMQFQSF7I=', NULL, '1', '13240791118', 'lhch102@yeah.net', '1', NULL, 1, '2018-2-25 02:30:57', NULL, NULL, NULL);
+INSERT INTO sys_user (`id`, `name`, `nick_name`, `user_name`, `password`, `token`, `sex`, `phone_number`, `email`, `locked`, `login_time`, `create_id`, `create_time`, `modify_id`, `modify_time`, `modify_item`) VALUES (3, '张三', 'zhangsan', 'zhangsan', 'U2FsdGVkX1/JRP2vCuq1DcMo+ALatZs8ajJMQFQSF7I=', NULL, '0', '13240791117', 'lhch102@yeah.net', '1', NULL, 1, '2018-2-25 02:30:57', NULL, NULL, NULL);
+
+INSERT INTO sys_role (`id`, `role_name`, `description`, `available`, `create_id`, `create_time`, `modify_id`, `modify_time`) VALUES (1, '影片管理员', NULL, '1', NULL, '2018-2-25 01:18:33', NULL, NULL);
+INSERT INTO sys_role (`id`, `role_name`, `description`, `available`, `create_id`, `create_time`, `modify_id`, `modify_time`) VALUES (2, '用户管理员', NULL, '1', NULL, '2018-2-25 01:18:33', NULL, NULL);
+
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (1, '权限', '', '', NULL, 0, '0/', '0', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (2, '影片管理', 'menu', '/item/queryItem.action', NULL, 1, '0/1/', '1.', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (3, '影片新增', 'permission', '/item/add.action', 'item:create', 11, '0/1/11/', '', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (4, '影片修改', 'permission', '/item/editItem.action', 'item:update', 11, '0/1/11/', '', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (5, '影片删除', 'permission', '', 'item:delete', 11, '0/1/11/', '', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (6, '影片查询', 'permission', '/item/queryItem.action', 'item:query', 11, '0/1/15/', NULL, '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (7, '用户管理', 'menu', '/user/query.action', 'user:query', 1, '0/1/', '2.', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (8, '用户新增', 'permission', '', 'user:create', 21, '0/1/21/', '', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (9, '用户修改', 'permission', '', 'user:update', 21, '0/1/21/', '', '1');
+INSERT INTO `permission` (`id`, `name`, `type`, `url`, `percode`, `parentid`, `parentids`, `sortstring`, `available`) VALUES (10, '用户删除', 'permission', '', 'user:delete', 21, '0/1/21/', '', '1');
