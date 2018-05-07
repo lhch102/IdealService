@@ -1,6 +1,9 @@
 package com.ideal.dao;
 
+<<<<<<< HEAD
 import com.ideal.interceptor.Mapper;
+=======
+>>>>>>> 0f20d1b658da6a3bb0fdbefd72e57e05a22705ce
 import com.ideal.pojo.MovieInfo;
 import org.springframework.stereotype.Repository;
 

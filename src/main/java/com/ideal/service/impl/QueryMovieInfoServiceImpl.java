@@ -5,11 +5,16 @@ import com.ideal.pojo.MovieInfo;
 import com.ideal.service.QueryMovieInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
+=======
+
+import java.util.ArrayList;
+>>>>>>> 0f20d1b658da6a3bb0fdbefd72e57e05a22705ce
 import java.util.List;
 
 /**

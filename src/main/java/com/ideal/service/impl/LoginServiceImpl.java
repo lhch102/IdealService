@@ -16,8 +16,11 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+=======
+>>>>>>> 0f20d1b658da6a3bb0fdbefd72e57e05a22705ce
 
 import java.util.*;
 
